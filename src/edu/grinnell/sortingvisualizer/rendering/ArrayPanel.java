@@ -1,9 +1,8 @@
-package edu.grinnell.sortingvisualizer;
+package edu.grinnell.sortingvisualizer.rendering;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-
+import java.awt.*;
 import javax.swing.JPanel;
+import edu.grinnell.sortingvisualizer.audio.NoteIndices;
 
 @SuppressWarnings("serial")
 public class ArrayPanel extends JPanel {
@@ -25,5 +24,14 @@ public class ArrayPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         // TODO: fill me in
-    }
+      Graphics2D g2 = (Graphics2D) g;
+      super.paintComponent(g);
+      g2.setBackground(Color.black);
+      int width = this.getWidth() / this.notes.arr.length;
+      int height = this.getHeight() / this.notes.arr.length;
+      for (int i = 0; i < this.notes.n; i++) {
+        g2.fillRect(i*width, 0, width, height*this.notes.arr[i]);
+      }//for
+    }//paintComponent
+    
 }

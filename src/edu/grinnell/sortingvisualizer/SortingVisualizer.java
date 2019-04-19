@@ -3,6 +3,9 @@ package edu.grinnell.sortingvisualizer;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+import edu.grinnell.sortingvisualizer.audio.NoteIndices;
+import edu.grinnell.sortingvisualizer.rendering.ArrayPanel;
+import edu.grinnell.sortingvisualizer.rendering.ControlPanel;
 
 public class SortingVisualizer {
 

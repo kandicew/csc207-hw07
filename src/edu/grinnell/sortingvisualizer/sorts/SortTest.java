@@ -10,6 +10,12 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 class SortTest {
+  
+  
+  // +-----------+---------------------------------------------------
+  // | Utilities |
+  // +-----------+
+
 
   /**
    * Our generic experiments.
@@ -28,7 +34,7 @@ class SortTest {
 
   /**
    * Another experiment, this time with our funky event list.
-   *//**
+   */
   public static void eventExperiment(PrintWriter pen,
       Function<String[], List<SortEvent<String>>> sorter) {
     String[] strings =
@@ -45,11 +51,11 @@ class SortTest {
     Sorts.eventSort(arr, events);
     pen.print("Replay: ");
     pen.println(Arrays.toString(arr));
-  } // eventExperiment */
+  } // eventExperiment 
 
   /**
    * Run a few experiments.
-   */  /**
+   */ 
   public static void main(String[] args) {
     PrintWriter pen = new PrintWriter(System.out, true);
     pen.println("Selection sort");
@@ -58,6 +64,6 @@ class SortTest {
 
     pen.println();
     pen.println("Quick sort");
-    experiment(pen, (arr) -> Sorts.quickSort(arr));
-  } // main(String[])   */
+    experiment(pen, (arr) -> Sorts.heapSort(arr));
+  } // main(String[]) 
 }

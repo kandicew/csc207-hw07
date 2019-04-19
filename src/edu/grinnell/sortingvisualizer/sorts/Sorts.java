@@ -12,7 +12,7 @@ public class Sorts {
    * @post arr is sorted
    */
   public static <T extends Comparable<T>> List<SortEvent<T>> heapSort(T[] arr) {
-    List<SortEvent<T>> lst = null;
+    List<SortEvent<T>> lst = new ArrayList();
 
     int n = arr.length;
     // Build heap (rearrange array)
@@ -234,7 +234,7 @@ public class Sorts {
    * @post arr is sorted
    */
   public static <T extends Comparable<T>> List<SortEvent<T>> quickSort(T[] arr) {
-    List<SortEvent<T>> lst = null;
+    List<SortEvent<T>> lst = new ArrayList();
     quickSortHelper(arr, 0, arr.length - 1, lst);
     return lst;
   }// quickSort
