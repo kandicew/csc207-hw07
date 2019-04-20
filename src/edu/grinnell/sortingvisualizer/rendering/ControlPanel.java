@@ -166,7 +166,9 @@ public class ControlPanel extends JPanel {
               SortEvent<Integer> e = newsort.get(index++);
               e.apply(notes.arr);
               for (Integer i: e.getAffectedIndices()) {
+                if (e.isEmphasized()) {
                 notes.highlightNote(i);
+                }
               scale.playNote(i, e.isEmphasized());
               }
               
@@ -175,7 +177,6 @@ public class ControlPanel extends JPanel {
               // 3. Play the corresponding notes denoted by the
               // affected indices logged in the event.
               // 4. Highlight those affected indices.
-              notes.clearAllHighlighted();
               panel.repaint();
             } else {
               this.cancel();
