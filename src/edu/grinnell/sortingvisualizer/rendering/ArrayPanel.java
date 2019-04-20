@@ -21,7 +21,11 @@ public class ArrayPanel extends JPanel {
     this.setPreferredSize(new Dimension(width, height));
   }//ArrayPanel
 
-  
+  /**
+   * draw the panel
+   * 
+   * @param g, a graphic panel
+   */  
   @Override
   public void paintComponent(Graphics g) {
     // set the background
