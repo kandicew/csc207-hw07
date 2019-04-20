@@ -146,10 +146,9 @@ public class ControlPanel extends JPanel {
           } else {
             newsort.add(event);
           }
-        } // for
+       } // for
         newsort.addAll(comp);
         // 2. Add in the compare events to the end of the list
-        List<SortEvent<Integer>> events = new java.util.LinkedList<>();
 
         // NOTE: The Timer class repetitively invokes a method at a
         // fixed interval. Here we are specifying that method
@@ -163,16 +162,20 @@ public class ControlPanel extends JPanel {
 
           @Override
           public void run() {
-            if (index < events.size()) {
-              SortEvent<Integer> e = events.get(index++);
-              e.apply(notes.getNotes());
-              scale.playNote(index, notes.isHighlighted(index));
-              //TODO: highlight
+            if (index < newsort.size()) {
+              SortEvent<Integer> e = newsort.get(index++);
+              e.apply(notes.arr);
+              for (Integer i: e.getAffectedIndices()) {
+                notes.highlightNote(i);
+              scale.playNote(i, e.isEmphasized());
+              }
+              
               // TODO: fill me in
               // 1. Apply the next sort event.
               // 3. Play the corresponding notes denoted by the
               // affected indices logged in the event.
               // 4. Highlight those affected indices.
+              notes.clearAllHighlighted();
               panel.repaint();
             } else {
               this.cancel();

@@ -22,6 +22,7 @@ public class Sorts {
       // One by one extract an element from heap
     for (int i = n - 1; i >= 0; i--) {
       // Move current root to end
+      lst.add(new SwapEvent<T>(0, i));
       swap(arr, 0, i);
       // call max heapify on the reduced heap
       heapify(arr, i, 0, lst);
@@ -45,16 +46,19 @@ public class Sorts {
     int r = 2 * i + 2; // right = 2*i + 2
 
     // If left child is larger than root
-    lst.add(new CompareEvent<T>(l, largest));
-    if (l < n && arr[l].compareTo(arr[largest]) > 0) {
-      largest = l;
-    } // if
-      // If right child is larger than largest so far
-    lst.add(new CompareEvent<T>(r, largest));
-    if (r < n && arr[r].compareTo(arr[largest]) > 0) {
-      largest = r;
-    } // if
-      // If largest is not root
+
+    if (l < n) {
+      lst.add(new CompareEvent<T>(l, largest));
+      if (arr[l].compareTo(arr[largest]) > 0) {
+        largest = l;
+      }
+    }
+    if (r < n) {
+      lst.add(new CompareEvent<T>(r, largest));
+      if (arr[r].compareTo(arr[largest]) > 0) {
+        largest = r;
+      }
+    }
     if (largest != i) {
       lst.add(new SwapEvent<T>(i, largest));
       swap(arr, i, largest);
@@ -80,8 +84,6 @@ public class Sorts {
       while (j >= 0 && (arr[j].compareTo(key) > 0)) {
         lst.add(new CompareEvent<T>(j, i));
         arr[j + 1] = arr[j--];
-
-        // index might be wrong
         lst.add(new CopyEvent<T>(arr[j + 1], j + 2));
       } // while
       arr[j + 1] = key;

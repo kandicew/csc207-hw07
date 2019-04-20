@@ -60,7 +60,7 @@ class SortTest {
     PrintWriter pen = new PrintWriter(System.out, true);
     pen.println("Selection sort");
     experiment(pen, (arr) -> Sorts.selectionSort(arr));
-    //eventExperiment(pen, (arr) -> Sorts.selectionSort(arr));
+    eventExperiment(pen, (arr) -> Sorts.selectionSort(arr));
 
     pen.println();
     pen.println("Quick sort");

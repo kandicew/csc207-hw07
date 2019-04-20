@@ -5,19 +5,19 @@ import java.util.List;
 
 // get help from Rob, Chris, SamR and Ally
 
-public class CopyEvent<T> implements SortEvent<T>{
+public class CopyEvent<T> implements SortEvent<T> {
 
-  //fields
+  // fields
   T val;
   int index;
-  
-  //constructor
+
+  // constructor
   public CopyEvent(T val, int index) {
     this.val = val;
     this.index = index;
-  }//Copy
+  }// Copy
 
-  //methods
+  // methods
   @Override
   public void apply(T[] arr) {
     // TODO Auto-generated method stub
@@ -30,10 +30,10 @@ public class CopyEvent<T> implements SortEvent<T>{
     List<Integer> lst = new ArrayList<Integer>();
     lst.add(index);
     return lst;
-  }//getAffectedIndices
+  }// getAffectedIndices
 
   @Override
   public boolean isEmphasized() {
     return true;
-  }//isEmphasized
+  }// isEmphasized
 }
